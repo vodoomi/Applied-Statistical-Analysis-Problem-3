@@ -57,8 +57,14 @@ class CustomEncoder():
 
     def transform(self, df: pl.DataFrame):
         if self.encoding == "label":
-            for col in self.cat_cols:
-                df[col] = self.encoders[col].transform(df[col].to_numpy())
+            df = (
+                df
+                .with_columns([
+                    pl.Series(col, self.encoders[col].transform(df[col].to_numpy()))
+                    for col in self.cat_cols
+                ])
+                .select(self.cat_cols)
+            )
         elif self.encoding == "onehot":
             df = (
                 df
