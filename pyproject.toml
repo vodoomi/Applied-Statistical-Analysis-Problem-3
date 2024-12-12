@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "09"
+version = "0.1.0"
+description = ""
+authors = ["vodoomi <abe.mikito@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^2.2.0"
+pandas = "^2.2.3"
+polars = "^1.17.0"
+matplotlib = "^3.9.3"
+scikit-learn = "^1.5.2"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
